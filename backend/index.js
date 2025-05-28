@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const authrouter = require('./auth/auth');
-
+const authrouter = require('./routers/auth');
+const teamRoutes = require('./routers/team');
 
 
 
@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGOURL)
   .catch((err) => console.log("Database connection failed:", err.message));
 
 app.use('/auth', authrouter);
-
+app.use('/teams', teamRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port number ${PORT}`);
