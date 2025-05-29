@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authrouter = require('./routers/auth');
 const teamRoutes = require('./routers/team');
-
+const projectRoutes = require('./routers/project');
 
 
 // Load env variables first
@@ -19,6 +19,7 @@ mongoose.connect(process.env.MONGOURL)
 
 app.use('/auth', authrouter);
 app.use('/teams', teamRoutes);
+app.use('/projects', projectRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port number ${PORT}`);
